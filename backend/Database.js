@@ -151,8 +151,8 @@ export function checkUserPhrase(password) {
                 `select * from user where password='${password}'`,
                 [],
                 (code,result) => {
-                    console.log(result);
-                    resolve(result.insertId);
+                    
+                    resolve(result.rows);
                 },
                 (code,error) => reject(error)
             );

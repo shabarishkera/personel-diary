@@ -10,6 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import ResetPhraseScreen from './screens/ResetPhraseScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Homepage from './screens/Homepage';
 export default function App() {
 const Stack=createStackNavigator();
   useEffect(()=>
@@ -29,7 +30,12 @@ await init().then(console.log("db init ok"))
                  <Stack.Screen
                   name="loginScreen"
                   component={Login}
-                  options={{title: 'Overview'}}
+                  options={{title: 'Login'}}
+                 />
+                 <Stack.Screen
+                  name="homePage"
+                  component={Homepage}
+                  options={{title: 'Home'}}
                  />
                  <Stack.Screen
                   name="signupScreen"

@@ -3,9 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from "react";
 
 import {
-
     StyleSheet,
-
     Text,
 
     View,
@@ -17,6 +15,7 @@ import {
     Button,
 
     TouchableOpacity,
+    Alert,
 
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -38,6 +37,8 @@ export default function Login() {
         async function checkfirstime()
         {
             const result=await AsyncStorage.getItem('isFirstEntry');
+            console.log(result+"first entry")
+            if(result==null)
             navigator.navigate("signupScreen");
         }
         checkfirstime();
@@ -47,8 +48,13 @@ export default function Login() {
     const handleLogin=async ()=>{
        // AsyncStorage.removeItem("isFirstEntry");
        const result= await checkUserPhrase(phrase);
-      console.log(result.length)
-       //navigator.navigate("Homepage");
+     if(result.length==0||result.length==null)
+     {
+
+        Alert.alert("Invald phrase","The phrase given does not in the database,check your phrase");
+     }
+     else
+       navigator.navigate("homePage");
     }
     const  handleForgot=()=>
     {
