@@ -1,6 +1,8 @@
 
 # Diary app - React Native
 
+
+# Note : app is still under progress(not fully implemented)
 Welcome to our personal diary app, designed to help you keep track of your personal life. Our app is built using React Native and Expo, a popular open-source framework for building mobile applications using JavaScript and React.
 
 Our app is designed to help you record your daily activities, thoughts, and experiences. With features like a journal, to-do list, our app makes it easy for you to stay organized and make the most of your time.
