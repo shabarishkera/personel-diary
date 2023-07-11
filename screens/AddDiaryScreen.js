@@ -20,61 +20,56 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { checkUserPhrase } from "../backend/Database";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function AddDiary() {
-    const navigator=useNavigation();
-    useEffect(()=>{
-       
-    },[])
-    
-    const [dairy,setdiary] =useState("");
-    const handlesave=async ()=>{
-      
-    
+    const navigator = useNavigation();
+    useEffect(() => {
+
+    }, [])
+
+    const [dairy, setdiary] = useState("");
+    const handlesave = async () => {
     }
     return (
         <>
-        <Text
+        <ScrollView style={{flex:1,gap:20}} collapsable={true}>
+            <Text
 
-style={[styles.Text,]}
+                style={styles.Text}
 
-placeholder="Secret Phase"
-
-placeholderTextColor="#003f5c"
-
-// onChangeText={(phrasetext) => setPhrase(phrasetext)}
-
-/>
-        <View style={styles.container}>
+            />
+            <View style={styles.container}>
 
 
-            <StatusBar style="auto" />
-            
-            <View style={styles.inputView}>
+                <StatusBar style="auto" />
 
-                
-                 <TextInput
+                <View style={styles.inputView}>
 
-style={styles.TextInput}
+                    <TextInput
+                            multiline={true}
+                        style={styles.TextInput}
+                        
 
-placeholder="write something here"
+                        placeholder="write something here"
 
-placeholderTextColor="#003f5c"
+                        placeholderTextColor="gray"
 
-onChangeText={(phrasetext) => setdiary(phrasetext)}
+                        onChangeText={(phrasetext) => setdiary(phrasetext)}
 
-/>
+                    />
+
+                </View>
+
+
+                <TouchableOpacity onPress={handlesave} style={styles.loginBtn}>
+
+                    <Text style={styles.loginText}>SAVE</Text>
+
+                </TouchableOpacity>
 
             </View>
-           
-
-            <TouchableOpacity onPress={handlesave} style={styles.loginBtn}>
-
-                <Text style={styles.loginText}>SAVE</Text>
-
-            </TouchableOpacity>
-
-        </View>
+            </ScrollView>
         </>
     );
 
@@ -93,25 +88,26 @@ const styles = StyleSheet.create({
         justifyContent: "center",
 
     },
-    Text:{
-        height: 150,
-       
-        width:200,
-        textAlign:"center",
-        right:0,
+    Text: {
+        height: 50,
+        width: '90%',
+        textAlign: "center",
+        right: 0,
         padding: 10,
-        marginRight:-29,
-        marginTop:20,
-        alignSelf:'flex-start',
-        backgroundColor:'black'
-        
+        marginTop: 20,
+        marginBottom:50,
+        alignSelf: 'flex-end',
+        backgroundColor: 'black',
+        borderTopLeftRadius:20,
+        borderBottomLeftRadius:20,
+
     },
 
     image: {
 
         marginBottom: 40,
-        width:200,
-        height:200
+        width: 200,
+        height: 200
 
     },
 
@@ -122,55 +118,42 @@ const styles = StyleSheet.create({
         borderRadius: 30,
 
         width: "90%",
-
-        minHeightheight:300,
-        
-
+        minHeightheight: 300,
+       minHeight:300,
         marginBottom: 20,
-
         alignItems: "center",
-
     },
 
     TextInput: {
-
-        height: 50,
-
+       minHeight:300,
         flex: 1,
-        width:200,
-        textAlign:"center",
-
+        width:'100%',
+ textAlign:'center',
+      borderRadius: 30,
         padding: 10,
-
-        marginLeft: 20,
-
-    },
-
-    forgot_button: {
-
-        height: 30,
-
-        marginBottom: 30,
+        backgroundColor:'black',
+     color:'white',
+     fontFamily:'monospace',
+     fontSize:16
 
     },
-
     loginBtn: {
-
-        width: "80%",
-
-        borderRadius: 25,
-
+        width: "90%",
+        borderTopRightRadius:20,
+        borderBottomRightRadius:20,
         height: 50,
-
         alignItems: "center",
-
+        alignSelf:'flex-start',
         justifyContent: "center",
 
         marginTop: 40,
 
-        backgroundColor: "#FF1493",
-        minWidth:200,
-
+        backgroundColor: "black",
+        color:'white',
+        minWidth: 200,
     },
+    loginText:{
+        color:'white'
+    }
 
 });

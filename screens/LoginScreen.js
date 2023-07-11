@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from "react";
-
+import { AntDesign } from '@expo/vector-icons';
 import {
     StyleSheet,
     Text,
@@ -64,7 +64,7 @@ navigator.navigate("resetPhraseScreen");
     return (
         <View style={styles.container}>
 
-            <Image style={styles.image} source={require("../assets/bot.png")} />
+<AntDesign name="book" style={styles.image} size={174} color="black" />
 
             <StatusBar style="auto" />
 
@@ -76,7 +76,7 @@ navigator.navigate("resetPhraseScreen");
 
                     placeholder="Secret Phase"
 
-                    placeholderTextColor="#003f5c"
+                    placeholderTextColor="white"
 
                     onChangeText={(phrasetext) => setPhrase(phrasetext)}
 
@@ -118,14 +118,14 @@ const styles = StyleSheet.create({
     image: {
 
         marginBottom: 40,
-        width:200,
-        height:200
+        alignSelf:'center',
+   
 
     },
 
     inputView: {
 
-        backgroundColor: "#FFC0CB",
+        backgroundColor: "gray",
 
         borderRadius: 30,
 
@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
         padding: 10,
 
         marginLeft: 20,
+        color:"white"
 
     },
 
@@ -174,10 +175,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
 
         marginTop: 40,
-
-        backgroundColor: "#FF1493",
+        color:"white",
+        backgroundColor: "black",
         minWidth:200,
 
     },
+    loginText:{
+        color:'white'
+    }
 
 });
