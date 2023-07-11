@@ -54,8 +54,7 @@ export default function Login() {
         Alert.alert("Invald phrase","The phrase given does not in the database,check your phrase");
      }
      else
-      // navigator.navigate("homePage");
-      navigator.navigate("addDiary")
+      navigator.navigate("initialScreen");
     }
     const  handleForgot=()=>
     {

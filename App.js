@@ -12,6 +12,7 @@ import ResetPhraseScreen from './screens/ResetPhraseScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Homepage from './screens/Homepage';
 import AddDiary from './screens/AddDiaryScreen';
+import InitalScreen from './screens/initialScreen';
 export default function App() {
 const Stack=createStackNavigator();
   useEffect(()=>
@@ -46,12 +47,17 @@ await init().then(console.log("db init ok"))
                  <Stack.Screen
                   name="signupScreen"
                   component={SignupScreen}
-                  options={{title: 'Overview'}}
+                  options={{title: 'signup'}}
+                 />
+                 <Stack.Screen
+                  name="initialScreen"
+                  component={InitalScreen}
+                  options={{title: ''}}
                  />
                  <Stack.Screen
                   name="resetPhraseScreen"
                   component={ResetPhraseScreen}
-                  options={{title: 'Overview'}}
+                  options={{title: 'reset phrase'}}
                  />
                  
                </Stack.Navigator>

@@ -18,27 +18,32 @@ const handlereset=async()=>
   return (
     <>
     <TextInput
-        style={styles.input}
+        style={[styles.inputView, styles.loginText]}
         value={username}
         placeholder={"Email"}
+        placeholderTextColor={'white'}
         onChangeText={(text) => setEmail(text)}
         autoCapitalize={"none"}
       />
       <TextInput
-        style={styles.input}
+        style={[styles.inputView, styles.loginText]}
         value={username}
         placeholder={"Username"}
+        placeholderTextColor={'white'}
         onChangeText={(text) => setUsername(text)}
         autoCapitalize={"none"}
       />
       <TextInput
-        style={styles.input}
+        style={[styles.inputView, styles.loginText]}
         value={password}
         placeholder={" New Password"}
+        placeholderTextColor={'white'}
         secureTextEntry
         onChangeText={(text) => setPassword(text)}
       />
-      <Button title={"Reset Phrase"} onPress={handlereset} />
+<View style={styles.loginBtn}>
+          <Button title={"reset"} color={'black'} onPress={handlereset} />
+        </View>
     </>
   );
 };
@@ -49,5 +54,72 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: '#fff',
   },
+  inputView: {
+
+    backgroundColor: "black",
+    minHeight:50,
+    margin: 20,
+    marginRight: 0,
+    alignSelf: 'flex-end',
+    borderBottomLeftRadius: 20,
+    borderTopLeftRadius: 20,
+    width: "90%",
+
+    height: 45,
+
+    marginBottom: 20,
+    alignItems: "center",
+    textAlign: 'center'
+
+  },
+
+  TextInput: {
+
+    height: 50,
+
+    flex: 1,
+    width: 200,
+    textAlign: "center",
+
+    padding: 10,
+
+    marginLeft: 20,
+    color: "white"
+
+  },
+
+  forgot_button: {
+
+    height: 30,
+
+    marginBottom: 30,
+
+  },
+
+  loginBtn: {
+
+    width: "90%",
+
+
+    borderTopRightRadius: 20,
+    borderBottomRightRadius: 20,
+
+    height: 50,
+
+    alignItems: "center",
+
+    justifyContent: "center",
+
+    marginTop: 40,
+    color: "white",
+    backgroundColor: "black",
+    minWidth: 200,
+
+  },
+  loginText: {
+    color: 'white',
+    fontFamily:'monospace',
+    fontSize:19
+  }
 });
 
