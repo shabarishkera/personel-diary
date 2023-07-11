@@ -20,83 +20,62 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { checkUserPhrase } from "../backend/Database";
-async function checkUser(pass,hash) {
-    //... fetch user from a db etc.
-    
-  
 
-    if(match) {
-        return true;
-    }
-
-    return  false;
-}
-export default function Login() {
+export default function AddDiary() {
     const navigator=useNavigation();
     useEffect(()=>{
-        async function checkfirstime()
-        {
-            const result=await AsyncStorage.getItem('isFirstEntry');
-            console.log(result+"first entry")
-            if(result==null)
-            navigator.navigate("signupScreen");
-        }
-        checkfirstime();
+       
     },[])
     
-    const [phrase, setPhrase] = useState("");
-    const handleLogin=async ()=>{
-       // AsyncStorage.removeItem("isFirstEntry");
-       const result= await checkUserPhrase(phrase);
-     if(result.length==0||result.length==null)
-     {
-
-        Alert.alert("Invald phrase","The phrase given does not in the database,check your phrase");
-     }
-     else
-      // navigator.navigate("homePage");
-      navigator.navigate("addDiary")
-    }
-    const  handleForgot=()=>
-    {
-navigator.navigate("resetPhraseScreen");
+    const [dairy,setdiary] =useState("");
+    const handlesave=async ()=>{
+      
+    
     }
     return (
+        <>
+        <Text
+
+style={[styles.Text,]}
+
+placeholder="Secret Phase"
+
+placeholderTextColor="#003f5c"
+
+// onChangeText={(phrasetext) => setPhrase(phrasetext)}
+
+/>
         <View style={styles.container}>
 
-            <Image style={styles.image} source={require("../assets/bot.png")} />
 
             <StatusBar style="auto" />
-
+            
             <View style={styles.inputView}>
 
-                <TextInput
+                
+                 <TextInput
 
-                    style={styles.TextInput}
+style={styles.TextInput}
 
-                    placeholder="Secret Phase"
+placeholder="write something here"
 
-                    placeholderTextColor="#003f5c"
+placeholderTextColor="#003f5c"
 
-                    onChangeText={(phrasetext) => setPhrase(phrasetext)}
+onChangeText={(phrasetext) => setdiary(phrasetext)}
 
-                />
+/>
 
             </View>
-            <TouchableOpacity onPress={handleForgot} >
+           
 
-                <Text style={styles.forgot_button}>Forgot Phrase ?</Text>
+            <TouchableOpacity onPress={handlesave} style={styles.loginBtn}>
 
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={handleLogin} style={styles.loginBtn}>
-
-                <Text style={styles.loginText}>LOGIN</Text>
+                <Text style={styles.loginText}>SAVE</Text>
 
             </TouchableOpacity>
 
         </View>
-
+        </>
     );
 
 }
@@ -113,6 +92,19 @@ const styles = StyleSheet.create({
 
         justifyContent: "center",
 
+    },
+    Text:{
+        height: 150,
+       
+        width:200,
+        textAlign:"center",
+        right:0,
+        padding: 10,
+        marginRight:-29,
+        marginTop:20,
+        alignSelf:'flex-start',
+        backgroundColor:'black'
+        
     },
 
     image: {
@@ -131,7 +123,8 @@ const styles = StyleSheet.create({
 
         width: "90%",
 
-        height: 45,
+        minHeightheight:300,
+        
 
         marginBottom: 20,
 
