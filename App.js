@@ -52,7 +52,9 @@ await init().then(console.log("db init ok"))
                  <Stack.Screen
                   name="initialScreen"
                   component={InitalScreen}
-                  options={{title: ''}}
+                  
+                  options={{title: '',headerLeft:null}}
+                  
                  />
                  <Stack.Screen
                   name="resetPhraseScreen"

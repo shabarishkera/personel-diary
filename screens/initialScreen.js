@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { useNavigation } from '@react-navigation/native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -50,6 +50,13 @@ fontFamily:'monospace'
 });
 
 const InitalScreen = () => {
+  const navigator=useNavigation();
+  navigator.addListener('beforeRemove',(e)=>{
+    e.preventDefault();
+    Alert.alert("cannot go back");
+
+    return false;
+  })
   return (
     <>
     <View style={styles.headingcontainer}>

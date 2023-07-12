@@ -33,6 +33,7 @@ async function checkUser(pass,hash) {
 }
 export default function Login() {
     const navigator=useNavigation();
+    
     useEffect(()=>{
         async function checkfirstime()
         {
