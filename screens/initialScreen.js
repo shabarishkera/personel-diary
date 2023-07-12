@@ -8,7 +8,6 @@ import { FontAwesome } from '@expo/vector-icons';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -19,7 +18,6 @@ const styles = StyleSheet.create({
   headingcontainer:{
 width:'100%',
 height:100,
-
   },
   heading:{
     fontSize:33,

@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Homepage from './screens/Homepage';
 import AddDiary from './screens/AddDiaryScreen';
 import InitalScreen from './screens/initialScreen';
+import SettingScreen from './screens/SettingScreen';
 export default function App() {
 const Stack=createStackNavigator();
   useEffect(()=>
@@ -38,6 +39,11 @@ await init().then(console.log("db init ok"))
                   name="addDiary"
                   component={AddDiary}
                   options={{title: 'Add'}}
+                 />
+                 <Stack.Screen
+                  name="settingsPage"
+                  component={SettingScreen}
+                  options={{title: ''}}
                  />
                  <Stack.Screen
                   name="homePage"
