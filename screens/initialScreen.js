@@ -1,7 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, Text, Alert } from 'react-native';
+import { View, StyleSheet, Text, Alert, Pressable } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -68,9 +71,18 @@ const InitalScreen = () => {
       
       
       <View style={styles.iconCon}>
-      <Icon name="camera" style={styles.icon} />
-      <Icon name="heart" style={styles.icon} />
-      <Icon name="user" style={styles.icon} />
+        <Pressable>
+        <Ionicons name="settings" size={24} color="black"  style={styles.icon}/>
+      </Pressable>
+      <Pressable>
+      <Entypo name="calendar" size={24} color="black" style={styles.icon} />
+      </Pressable>
+      <Pressable>
+      <Ionicons name="add-circle" size={24} color="black" style={styles.icon}/>
+      </Pressable>
+      <Pressable>
+      <FontAwesome name="user-circle-o" size={24} color="black" style={styles.icon} />
+      </Pressable>
       </View>
     </View>
     </>
