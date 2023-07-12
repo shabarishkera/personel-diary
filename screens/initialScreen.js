@@ -59,7 +59,27 @@ const InitalScreen = () => {
     Alert.alert("cannot go back");
 
     return false;
-  })
+  });
+  const onSettingpress=()=>
+{
+navigator.navigate("settingsPage");
+
+}
+const onCalenderPress=()=>
+{
+
+  navigator.navigate("homePage");
+}
+const onProfilePress=()=>
+{
+  navigator.navigate("settingsPage");
+  
+}
+const onAddPress=()=>
+{
+
+ navigator.navigate("addDiary");
+}
   return (
     <>
     <View style={styles.headingcontainer}>
@@ -71,16 +91,16 @@ const InitalScreen = () => {
       
       
       <View style={styles.iconCon}>
-        <Pressable>
+        <Pressable onPress={onSettingpress}>
         <Ionicons name="settings" size={24} color="black"  style={styles.icon}/>
       </Pressable>
-      <Pressable>
+      <Pressable onPress={onCalenderPress}>
       <Entypo name="calendar" size={24} color="black" style={styles.icon} />
       </Pressable>
-      <Pressable>
+      <Pressable onPress={onAddPress}>
       <Ionicons name="add-circle" size={24} color="black" style={styles.icon}/>
       </Pressable>
-      <Pressable>
+      <Pressable onPress={onProfilePress}>
       <FontAwesome name="user-circle-o" size={24} color="black" style={styles.icon} />
       </Pressable>
       </View>
