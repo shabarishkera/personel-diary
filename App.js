@@ -14,6 +14,7 @@ import Homepage from './screens/Homepage';
 import AddDiary from './screens/AddDiaryScreen';
 import InitalScreen from './screens/initialScreen';
 import SettingScreen from './screens/SettingScreen';
+import UserProfile from './screens/UserProfile';
 export default function App() {
 const Stack=createStackNavigator();
   useEffect(()=>
@@ -54,6 +55,11 @@ await init().then(console.log("db init ok"))
                   name="signupScreen"
                   component={SignupScreen}
                   options={{title: 'signup'}}
+                 />
+                  <Stack.Screen
+                  name="userProfile"
+                  component={UserProfile}
+                  options={{title: 'about you'}}
                  />
                  <Stack.Screen
                   name="initialScreen"

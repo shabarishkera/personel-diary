@@ -70,7 +70,7 @@ const onCalenderPress=()=>
 }
 const onProfilePress=()=>
 {
-  navigator.navigate("settingsPage");
+  navigator.navigate("userProfile");
   
 }
 const onAddPress=()=>
