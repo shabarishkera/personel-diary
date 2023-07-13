@@ -24,8 +24,8 @@ const handlePrivacyPolicy=()=>{
       text="User Profile"
      
       leftIcon={{
-        name: 'file-document',
-        type: 'material-community',
+        name: 'user',
+        type: 'font-awesome',
       }}
       onPress={() => navigator.navigate("userProfile")}
     />
@@ -48,24 +48,24 @@ const handlePrivacyPolicy=()=>{
     <NavigateRow
       text="Logout"
       leftIcon={{
-        name: 'users',
-        type: 'font-awesome',
+        name: 'logout',
+        type: 'material-community',
       }}
       onPress={() => navigator.navigate("loginScreen")}
     />
     <NavigateRow
       text="Delete user"
       leftIcon={{
-        name: 'users',
-        type: 'font-awesome',
+        name: 'delete',
+        type: 'material-community',
       }}
       onPress={handleDeleteuser}
     />
     <NavigateRow
       text="Go Back"
       leftIcon={{
-        name: 'users',
-        type: 'font-awesome',
+        name: 'back',
+        type: 'entypo',
       }}
       onPress={handleGoBack}
     />
