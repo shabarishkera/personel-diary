@@ -54,7 +54,7 @@ const InitalScreen = () => {
   const navigator=useNavigation();
   navigator.addListener('beforeRemove',(e)=>{
     e.preventDefault();
-    Alert.alert("cannot go back");
+    const src=e.data.action.source;
 
     return false;
   });

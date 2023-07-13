@@ -1,20 +1,33 @@
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Text } from 'react-native';
 import { SectionRow, SettingsPage, NavigateRow, BaseRow } from 'react-native-settings-view';
 
  export default function SettingScreen() {
+  const navigator=useNavigation();
+const handleDeleteuser=()=>
+{
+
+}
+const handleGoBack=()=>{
+navigator.goBack();
+}
+const handlePrivacyPolicy=()=>{
+
+}
+
    return (
      <>
 <SettingsPage>
   <SectionRow title="SETTINGS" titleStyle={{backgroundColor:'white',textAlign:'center',width:'100%'}}>
     <NavigateRow
-      text="Terms and conditions"
+      text="User Profile"
      
       leftIcon={{
         name: 'file-document',
         type: 'material-community',
       }}
-      onPress={() => console.log('terms')}
+      onPress={() => navigator.navigate("userProfile")}
     />
     <NavigateRow
       text="Privacy Policy"
@@ -31,6 +44,30 @@ import { SectionRow, SettingsPage, NavigateRow, BaseRow } from 'react-native-set
         type: 'font-awesome',
       }}
       onPress={() => console.log('contact')}
+    />
+    <NavigateRow
+      text="Logout"
+      leftIcon={{
+        name: 'users',
+        type: 'font-awesome',
+      }}
+      onPress={() => navigator.navigate("loginScreen")}
+    />
+    <NavigateRow
+      text="Delete user"
+      leftIcon={{
+        name: 'users',
+        type: 'font-awesome',
+      }}
+      onPress={handleDeleteuser}
+    />
+    <NavigateRow
+      text="Go Back"
+      leftIcon={{
+        name: 'users',
+        type: 'font-awesome',
+      }}
+      onPress={handleGoBack}
     />
      {/* <CheckRow
       text="Notifications"
