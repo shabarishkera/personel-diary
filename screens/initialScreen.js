@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   icon: {
     fontSize: 50,
     color: '#000',
+    elevation:44
   },
   headingcontainer:{
 width:'100%',
@@ -39,6 +40,7 @@ fontFamily:'monospace'
     flexDirection:'row',
     justifyContent:'space-evenly',
     gap:29,
+    elevation:66
   },
   bar:{
     height:15,

@@ -20,10 +20,16 @@ export default UserProfile = () => {
           </Text>
 
           <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.text}>Opcion 1</Text>
+            <Text style={styles.text}>Name: </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.text}>Opcion 2</Text>
+            <Text style={styles.text}>Email: </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.text}>Age: </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.text}>DOB: </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -83,11 +89,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 20,
-    width: 250,
-    borderRadius: 30,
+    width:'95%',
+    borderRadius: 5,
     backgroundColor: 'black',
+    elevation:19,
+    shadowColor:'pink',
+    shadowOpacity:1
+ 
+    
   },
   text:{
-color:'white'
+color:'white',
+textAlign:'center',
   }
 })
