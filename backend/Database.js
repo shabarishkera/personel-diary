@@ -126,6 +126,15 @@ export async function updateuser(password) {
     })
     return promise;
 }
+export async function getuserData(password) {
+    const promise = new Promise((resolve, reject) => {
+        database.transaction((ts) => {
+            ts.executeSql(`select * from user limit 1`, [], (_,result) => {
+                resolve(result)}, (_, error) => reject(error));
+        });
+    })
+    return promise;
+}
 export function createuser(email,username,password) {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
@@ -149,6 +158,25 @@ export function checkUserPhrase(password) {
         database.transaction((ts) => {
             ts.executeSql(
                 `select * from user where password='${password}'`,
+                [],
+                (code,result) => {
+                    
+                    resolve(result.rows);
+                },
+                (code,error) => reject(error)
+            );
+        });
+    });
+    return promise;
+}
+
+
+
+export function changeusercredentials(email,name) {
+    const promise = new Promise((resolve, reject) => {
+        database.transaction((ts) => {
+            ts.executeSql(
+                `update user set name='${name}' , email='${email}'`,
                 [],
                 (code,result) => {
                     

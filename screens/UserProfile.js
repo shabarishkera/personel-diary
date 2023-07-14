@@ -1,14 +1,80 @@
-import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity, Pressable, Button ,TextInput} from 'react-native'
+import * as ImagePicker from 'expo-image-picker';
+import Modal from "react-native-modal";
+import { AntDesign } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { changeusercredentials, getuserData } from '../backend/Database';
 export default UserProfile = () => {
+  const [profileurl,setprofileurl]=useState(null);
+  const[email,setemail]=useState('');
+  const [name,setname]=useState('');
+  const [buttonvisible,setvisible]=useState(false);
+  useEffect(()=>{
+   async  function getprofile()
+   {
+   const imageurl=await AsyncStorage.getItem('userProfileImage');
+   setprofileurl(imageurl);
+   var userdetails=await getuserData();
+   userdetails=userdetails.rows._array[0];
+   
+   setemail(userdetails.email);
+   setname(userdetails.name);
+   }
+  getprofile();
   
+  },[])
+ const handleuserdetailchanage=async()=>{
+   const result =await changeusercredentials(email,name);
+   setvisible(false);
+ }
+  const handlepickImage=async ()=>{
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+if(!result.canceled)
+{
+setprofileurl(result.assets[0].uri);
+await AsyncStorage.setItem("userProfileImage",result.assets[0].uri);
+}
+  }
   return (
-    <View style={styles.container}>
-      <View style={styles.header}></View>
+    <View style={styles.containermodal}>
+       <Modal isVisible={buttonvisible}style={styles.containermodal} backdropColor='voilet' backdropOpacity={.1}
+       >
+        <View style={styles.container}>
+      <AntDesign name="user" size={114} color="black" style={styles.image} />
+        <TextInput
+          style={[styles.inputView, styles.loginText]}
+          value={email}
+          placeholderTextColor={'white'}
+          placeholder={email}
+          onChangeText={(text) => setemail(text)}
+          autoCapitalize={"none"}
+        />
+        <TextInput
+          style={[styles.inputView, styles.loginText]}
+          value={name}
+          placeholder={name}
+          placeholderTextColor={'white'}
+          onChangeText={(text) => setname(text)}
+          autoCapitalize={"none"}
+        />
+  
+        <View style={styles.loginBtn}>
+          <Button title={"Save"}  color={'black'}  onPress={handleuserdetailchanage} />
+        </View>
+      </View>
+      </Modal>
+      <View style={styles.header}><Text style={styles.text}></Text></View>
+       
       <Image
         style={styles.avatar}
-        source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }}
+        
+        source={{ uri: profileurl?profileurl:'https://bootdey.com/img/Content/avatar/avatar6.png'} }
       />
       <View style={styles.body}>
         <View style={styles.bodyContent}>
@@ -20,16 +86,20 @@ export default UserProfile = () => {
           </Text>
 
           <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.text}>Name: </Text>
+            <Text style={styles.text}>{name} </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.text}>Email: </Text>
+            <Text style={styles.text}>{email} </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonContainer}>
+          {/* <TouchableOpacity style={styles.buttonContainer}>
             <Text style={styles.text}>Age: </Text>
+          </TouchableOpacity> */}
+          <TouchableOpacity style={styles.buttonContainer}>
+            <Button title='Edit profile Image' onPress={handlepickImage} color={'black'} ></Button>
+          
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.text}>DOB: </Text>
+            <Button title='Edit Details' onPress={()=>setvisible(true)} color={'black'} ></Button>
           </TouchableOpacity>
         </View>
       </View>
@@ -38,20 +108,67 @@ export default UserProfile = () => {
 }
 
 const styles = StyleSheet.create({
+  containermodal:{
+    flex: 1,
+    backgroundColor:"gray",
+    marginTop:0,
+    borderRadius:20,
+   
+  },
+  image:{
+    alignSelf:"center",
+  },
+  loginText:{
+    color: 'white',
+    fontFamily:'monospace',
+    fontSize:19
+  },
+  inputView:{
+
+    backgroundColor: "black",
+    minHeight:50,
+    margin: 20,
+    
+    alignSelf: 'flex-end',
+    borderBottomLeftRadius: 20,
+    borderRadius: 20,
+    width: "90%",
+
+    height: 45,
+
+    marginBottom: 20,
+    alignItems: "center",
+    textAlign: 'center'
+  },
+  loginBtn:{
+    width: "90%",
+    borderRadius: 20,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+alignSelf:'center',
+    marginTop: 40,
+    color: "white",
+    backgroundColor: "white",
+    minWidth: 200,
+  },
+  text:{
+
+  },
   header: {
     backgroundColor: 'black',
     height: 200,
   },
   avatar: {
-    width: 130,
-    height: 130,
-    borderRadius: 63,
+    width: 180,
+    height: 180,
+    borderRadius:88,
     borderWidth: 4,
     borderColor: 'white',
     marginBottom: 10,
     alignSelf: 'center',
     position: 'absolute',
-    marginTop: 130,
+    marginTop: 110,
   },
   name: {
     fontSize: 22,
@@ -97,6 +214,9 @@ const styles = StyleSheet.create({
     shadowOpacity:1
  
     
+  },
+  imagecon:{
+marginTop:-40
   },
   text:{
 color:'white',
