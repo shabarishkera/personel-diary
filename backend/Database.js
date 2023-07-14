@@ -83,11 +83,11 @@ export function fetchdiary(obj) {
     });
     return promise;
 }
-export function fetchyeardata(obj) {
+export function addDiary(date,year,day,data) {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
          
-            ts.executeSql(`SELECT * FROM  diarydata where year=${obj.year} `, [], (_,result) => {
+            ts.executeSql(`INSERT INTO diarydata values(${date},${year},${day},${data}) `, [], (_,result) => {
                 
                 resolve(result);
             }, (_, error) => reject(error));

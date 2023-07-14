@@ -19,17 +19,24 @@ import {
 
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { checkUserPhrase } from "../backend/Database";
+import { addDiary, checkUserPhrase } from "../backend/Database";
 import { ScrollView } from "react-native-gesture-handler";
 
 export default function AddDiary() {
     const navigator = useNavigation();
-    useEffect(() => {
-
-    }, [])
-
+    const date=new Date();
+    var dateFormat = date.getFullYear() + "-" +((date.getMonth()+1).length != 2 ? "0" + (date.getMonth() + 1) : (date.getMonth()+1)) + "-" + (date.getDate().length != 2 ?"0" + date.getDate() : date.getDate());
+    const [dateval,setdate]=useState('');
     const [dairy, setdiary] = useState("");
+    useEffect(() => {
+setdate(dateFormat);
+    }, [])
+  
     const handlesave = async () => {
+       const result= await addDiary(dateval,date.getFullYear(),date.getDay()+"",dairy);
+       console.log(result);
+        navigator.navigate("initialScreen");
+
     }
     return (
         <>
@@ -38,7 +45,7 @@ export default function AddDiary() {
 
                 style={styles.Text}
 
-            />
+            >{dateval}</Text>
             <View style={styles.container}>
 
 

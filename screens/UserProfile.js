@@ -43,7 +43,7 @@ await AsyncStorage.setItem("userProfileImage",result.assets[0].uri);
   }
   return (
     <View style={styles.containermodal}>
-       <Modal isVisible={buttonvisible}style={styles.containermodal} backdropColor='voilet' backdropOpacity={.1}
+       <Modal isVisible={buttonvisible}style={styles.containermodal}  backdropColor='white'
        >
         <View style={styles.container}>
       <AntDesign name="user" size={114} color="black" style={styles.image} />
@@ -210,7 +210,7 @@ alignSelf:'center',
     borderRadius: 5,
     backgroundColor: 'black',
     elevation:19,
-    shadowColor:'pink',
+    shadowColor:'#FFD700',
     shadowOpacity:1
  
     
