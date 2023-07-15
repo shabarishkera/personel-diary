@@ -1,4 +1,4 @@
-1.get all the entyes in the database and update the list  in the format '2011-22-122' and and strore the diary data in the respective field
-2.make the diary editable -take date and data and navigate to 'Editing screen'
+1.fill the settings field with aaprprprate function;
+2.change ui in the user profile
 3.make inital screen more ui based 
-4. add validaation and conformation while adding data;
+
