@@ -1,12 +1,12 @@
 import * as SQLITE from 'expo-sqlite'
-const database =SQLITE.openDatabase( 'diarydatabase.db');
+const database =SQLITE.openDatabase( 'diarydatabase2.db');
 export function init() {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
 
             ts.executeSql(`
             CREATE TABLE IF NOT EXISTS diarydata(
-                 dateinfo date PRIMARY KEY,
+                 dateinfo varchar(20) PRIMARY KEY,
                  year int ,
                 day varchar(20),
                  data TEXT);
@@ -32,12 +32,12 @@ export function init() {
 }
 
 ///
-export function putData(obj) {
+export function putData(dateinfo,year,day,data) {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
             ts.executeSql(
                 `INSERT INTO diarydata (dateinfo,year,day,data) VALUES (?, ?, ?,?)`,
-                [obj.date,obj.year,obj.day,obj.data],
+                [dateinfo,year,day,data],
                 (_, result) => {
                     
                     resolve(result.insertId);
@@ -45,18 +45,9 @@ export function putData(obj) {
                 (_, error) => reject(error)
             );
         });
-        database.transaction((ts) => {
-            ts.executeSql(
-                `INSERT INTO diarydata (dateinfo,year,day,data) VALUES (?, ?, ?,?)`,
-                [obj.date,obj.year,obj.day,obj.data],
-                (_, result) => {
-                    
-                    resolve(result.insertId);
-                },
-                (_, error) => reject(error)
-            );
-        });
+        
     });
+
     return promise;
 }
 
@@ -83,11 +74,24 @@ export function fetchdiary(obj) {
     });
     return promise;
 }
-export function addDiary(date,year,day,data) {
+export function fetchalldiary() {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
          
-            ts.executeSql(`INSERT INTO diarydata values(${date},${year},${day},${data}) `, [], (_,result) => {
+            ts.executeSql(`SELECT * FROM  diarydata;' `, [], (_,result) => {
+                
+                resolve(result);
+            }, (_, error) => reject(error));
+        });
+    });
+    return promise;
+}
+export function addDiary(date,year,day,data) {
+    console.log("data got="+date+" "+year+" "+day+" "+data)
+    const promise = new Promise((resolve, reject) => {
+        database.transaction((ts) => {
+         
+            ts.executeSql(`INSERT INTO diarydata values('${date}',${year},${day},'${data}') `, [], (_,result) => {
                 
                 resolve(result);
             }, (_, error) => reject(error));

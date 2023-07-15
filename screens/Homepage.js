@@ -1,4 +1,5 @@
 
+import { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -7,8 +8,24 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Agenda } from 'react-native-calendars';
+import { fetchalldiary } from '../backend/Database';
 
 function Homepage() {
+  const [items,setitems]=useState({});
+  useEffect(()=>{
+    async function inititems()
+    {
+const result=await fetchalldiary();
+console.log(result);
+var tempitem={};
+for(let i=0;i<result.rows._array;i++)
+{
+  ///get all rows and addd to temp aarry 
+}
+
+    }
+     inititems();
+  },[])
   return (
     <SafeAreaView style={styles.container}>
       <Agenda

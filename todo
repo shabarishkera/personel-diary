@@ -1,5 +1,4 @@
 1.get all the entyes in the database and update the list  in the format '2011-22-122' and and strore the diary data in the respective field
 2.make the diary editable -take date and data and navigate to 'Editing screen'
-3.provide an button for adding an new diary entry .
-4.make a seperate screen for viewing and homePage- homepage should only show settings details,add buttton - the viewing page shuld contain data for the calender.
- (the adding option should be only availabble fro today . if there is already is there then just  go to editing page whit todays data)
+3.make inital screen more ui based 
+4. add validaation and conformation while adding data;

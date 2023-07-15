@@ -25,7 +25,8 @@ import { ScrollView } from "react-native-gesture-handler";
 export default function AddDiary() {
     const navigator = useNavigation();
     const date=new Date();
-    var dateFormat = date.getFullYear() + "-" +((date.getMonth()+1).length != 2 ? "0" + (date.getMonth() + 1) : (date.getMonth()+1)) + "-" + (date.getDate().length != 2 ?"0" + date.getDate() : date.getDate());
+    console.log(date.getDate().toLocaleString().length);
+    var dateFormat = date.getFullYear() + "-" +((date.getMonth()+1).length != 2 ? "0" + (date.getMonth() + 1) : (date.getMonth()+1)) + "-" + (date.getDate().toLocaleString().length != 2 ?"0" + date.getDate() : date.getDate());
     const [dateval,setdate]=useState('');
     const [dairy, setdiary] = useState("");
     useEffect(() => {
@@ -33,7 +34,14 @@ setdate(dateFormat);
     }, [])
   
     const handlesave = async () => {
+        //validate the input
+        if(dairy.length<=5)
+        {
+            Alert.alert("Invalid Entry","The diary must be atleast 6 characters");
+            return;
+        }
        const result= await addDiary(dateval,date.getFullYear(),date.getDay()+"",dairy);
+       
        console.log(result);
         navigator.navigate("initialScreen");
 
@@ -43,7 +51,7 @@ setdate(dateFormat);
         <ScrollView style={{flex:1,gap:20}} collapsable={true}>
             <Text
 
-                style={styles.Text}
+                style={styles.text}
 
             >{dateval}</Text>
             <View style={styles.container}>
@@ -107,8 +115,26 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         borderTopLeftRadius:20,
         borderBottomLeftRadius:20,
+       
 
     },
+    text:{
+        color:'white',
+        height: 50,
+        width: '90%',
+        textAlign: "center",
+        right: 0,
+        padding: 10,
+        marginTop: 20,
+        marginBottom:50,
+        alignSelf: 'flex-end',
+        backgroundColor: 'black',
+        borderTopLeftRadius:20,
+        borderBottomLeftRadius:20,
+        fontSize:18
+       
+    }
+    ,
 
     image: {
 
