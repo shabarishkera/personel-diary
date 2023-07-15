@@ -1,5 +1,5 @@
 import * as SQLITE from 'expo-sqlite'
-const database =SQLITE.openDatabase( 'diarydatabase2.db');
+const database =SQLITE.openDatabase( 'diarydatabase.db');
 export function init() {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {

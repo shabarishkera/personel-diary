@@ -16,24 +16,25 @@ function Homepage() {
     async function inititems()
     {
 const result=await fetchalldiary();
-console.log(result);
-var tempitem={};
-for(let i=0;i<result.rows._array;i++)
-{
-  ///get all rows and addd to temp aarry 
-}
 
+console.log(result.rows._array.length);
+var tempitem={};
+for(let i=0;i<result.rows._array.length;i++)
+{
+ const array=result.rows._array;
+ tempitem[`${array[i].dateinfo}`]=[{"name":array[i].data}];
+
+}
+console.log(tempitem);
+setitems(tempitem);
     }
      inititems();
   },[])
   return (
     <SafeAreaView style={styles.container}>
       <Agenda
-        selected='2022-05-10'
-        items={{
-          '2022-05-10': [{name: 'Cycling'}, {name: 'Walking'}, {name: 'Running'}],
-          '2022-12-02': [{name: 'Writing'}]
-        }}
+        selected='2023-07-15'
+        items={items}
         renderItem={(item, isFirst) => (
           <TouchableOpacity style={styles.item}>
             <Text style={styles.itemText}>{item.name}</Text>
