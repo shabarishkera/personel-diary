@@ -15,6 +15,7 @@ import AddDiary from './screens/AddDiaryScreen';
 import InitalScreen from './screens/initialScreen';
 import SettingScreen from './screens/SettingScreen';
 import UserProfile from './screens/UserProfile';
+import EditdiaryScreen from './screens/EditScreen';
 export default function App() {
 const Stack=createStackNavigator();
   useEffect(()=>
@@ -72,6 +73,11 @@ await init().then(console.log("db init ok"))
                   name="resetPhraseScreen"
                   component={ResetPhraseScreen}
                   options={{title: 'reset phrase'}}
+                 />
+                 <Stack.Screen
+                  name="editDiaryScreen"
+                  component={EditdiaryScreen}
+                  options={{title: 'edit'}}
                  />
                  
                </Stack.Navigator>

@@ -51,22 +51,22 @@ export function putData(dateinfo,year,day,data) {
     return promise;
 }
 
-export async function editdiary(obj) {
+export async function editdiary(date,data) {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
-            ts.executeSql(`UPDATE  diarydata SET data='${obj.data
+            ts.executeSql(`UPDATE  diarydata SET data='${data
                 }'
-                 WHERE date='${obj.date}' `, [], () => resolve(), (_, error) => reject(error));
+                 WHERE date='${date}' `, [], () => resolve(), (_, error) => reject(error));
         });
       
     })
     return promise;
 }
-export function fetchdiary(obj) {
+export function fetchdiary(date) {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
          
-            ts.executeSql(`SELECT data FROM  diarydata where date='${obj.date}' `, [], (_,result) => {
+            ts.executeSql(`SELECT data FROM  diarydata where dateinfo='${date}' `, [], (_,result) => {
                 
                 resolve(result);
             }, (_, error) => reject(error));
