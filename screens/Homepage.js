@@ -9,8 +9,14 @@ import {
 } from 'react-native';
 import { Agenda } from 'react-native-calendars';
 import { fetchalldiary } from '../backend/Database';
-
+import { useNavigation } from '@react-navigation/native';
 function Homepage() {
+  const navigator=useNavigation();
+  const handleEditDiary=async(item)=>
+  {
+
+navigator.navigate("editDiaryScreen",{"dateval":item.date,"diarytext":item.name});
+  }
   const [items,setitems]=useState({});
   useEffect(()=>{
     async function inititems()
@@ -22,7 +28,7 @@ var tempitem={};
 for(let i=0;i<result.rows._array.length;i++)
 {
  const array=result.rows._array;
- tempitem[`${array[i].dateinfo}`]=[{"name":array[i].data}];
+ tempitem[`${array[i].dateinfo}`]=[{"name":array[i].data,"date":array[i].dateinfo}];
 
 }
 console.log(tempitem);
@@ -36,7 +42,7 @@ setitems(tempitem);
         selected='2023-07-15'
         items={items}
         renderItem={(item, isFirst) => (
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity onLongPress={()=>handleEditDiary(item)} style={styles.item}>
             <Text style={styles.itemText}>{item.name}</Text>
           </TouchableOpacity>
         )}
