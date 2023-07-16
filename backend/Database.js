@@ -192,3 +192,35 @@ export function changeusercredentials(email,name) {
     });
     return promise;
 }
+export function deletediarytable() {
+    const promise = new Promise((resolve, reject) => {
+        database.transaction((ts) => {
+            ts.executeSql(
+                `DROP TABLE diarydata`,
+                [],
+                (code,result) => {
+                    
+                    resolve(result.rows);
+                },
+                (code,error) => reject(error)
+            );
+        });
+    });
+    return promise;
+}
+export function deleteusertable() {
+    const promise = new Promise((resolve, reject) => {
+        database.transaction((ts) => {
+            ts.executeSql(
+                `DROP TABLE user`,
+                [],
+                (code,result) => {
+                    
+                    resolve(result.rows);
+                },
+                (code,error) => reject(error)
+            );
+        });
+    });
+    return promise;
+}

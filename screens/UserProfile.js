@@ -212,9 +212,6 @@ alignSelf:'center',
     backgroundColor: 'black',
     elevation:9,
     shadowColor:'violet',
-  
- 
-    
   },
   imagecon:{
 marginTop:-40

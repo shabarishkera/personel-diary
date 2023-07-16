@@ -1,15 +1,44 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text } from 'react-native';
+import { Text ,BackHandler} from 'react-native';
 import { SectionRow, SettingsPage, NavigateRow, BaseRow } from 'react-native-settings-view';
+import { deletediarytable, deleteusertable } from '../backend/Database';
 
  export default function SettingScreen() {
   const navigator=useNavigation();
-const handleDeleteuser=()=>
+//for showing confirmation while user persses delete user
+
+const showConfirmDialog = (title,msg,onOk,) => {
+  return Alert.alert(
+    title,
+    msg,
+    [
+      // The "Yes" button
+      {
+        text: "Yes",
+        onPress: onOk,
+      },
+      // The "No" button
+      // Does nothing but dismiss the dialog when tapped
+      {
+        text: "No",
+        
+      },
+    ]
+  );
+};
+const deletinguser=async()=>
 {
-  //remove all details of the user,
-  //remove all data from the diarydata
-  //set asucstroage for isfirshitem and userimage to null
+  await deleteusertable();
+  await deletediarytable();
+  await AsyncStorage.setItem('isFirstEntry', 'false');
+  BackHandler.exitApp();
+
+}
+const handleDeleteuser=async()=>
+{
+  showConfirmDialog("Delete User","This could mean that all the data about the user will be lost ,are you sure about deletion?",deletinguser);
+  
 
 }
 const handleGoBack=()=>{
