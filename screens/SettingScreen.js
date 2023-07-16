@@ -7,6 +7,9 @@ import { SectionRow, SettingsPage, NavigateRow, BaseRow } from 'react-native-set
   const navigator=useNavigation();
 const handleDeleteuser=()=>
 {
+  //remove all details of the user,
+  //remove all data from the diarydata
+  //set asucstroage for isfirshitem and userimage to null
 
 }
 const handleGoBack=()=>{
@@ -43,7 +46,7 @@ const handlePrivacyPolicy=()=>{
         name: 'users',
         type: 'font-awesome',
       }}
-      onPress={() => console.log('contact')}
+      onPress={() => {navigator.navigate("contactUsScreen")}}
     />
     <NavigateRow
       text="Logout"
@@ -51,7 +54,7 @@ const handlePrivacyPolicy=()=>{
         name: 'logout',
         type: 'material-community',
       }}
-      onPress={() => navigator.navigate("loginScreen")}
+      onPress={()=> navigator.navigate("loginScreen")}
     />
     <NavigateRow
       text="Delete user"

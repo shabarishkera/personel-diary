@@ -16,6 +16,7 @@ import InitalScreen from './screens/initialScreen';
 import SettingScreen from './screens/SettingScreen';
 import UserProfile from './screens/UserProfile';
 import EditdiaryScreen from './screens/EditScreen';
+import ContactUsScreen from './screens/ContactUsScreen';
 export default function App() {
 const Stack=createStackNavigator();
   useEffect(()=>
@@ -79,7 +80,12 @@ await init().then(console.log("db init ok"))
                   component={EditdiaryScreen}
                   options={{title: 'edit'}}
                  />
-                 
+                  <Stack.Screen
+                  name="contactUsScreen"
+                  component={ContactUsScreen}
+                  options={{title: ''}}
+                 />
+              
                </Stack.Navigator>
              </NavigationContainer>
           </SafeAreaView>   

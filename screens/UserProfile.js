@@ -9,7 +9,7 @@ export default UserProfile = () => {
   const [profileurl,setprofileurl]=useState(null);
   const[email,setemail]=useState('');
   const [name,setname]=useState('');
-  const [buttonvisible,setvisible]=useState(false);
+   const [buttonvisible,setvisible]=useState(false);
   useEffect(()=>{
    async  function getprofile()
    {
@@ -43,7 +43,7 @@ await AsyncStorage.setItem("userProfileImage",result.assets[0].uri);
   }
   return (
     <View style={styles.containermodal}>
-       <Modal isVisible={buttonvisible}style={styles.containermodal}  backdropColor='white'
+       <Modal  isVisible={buttonvisible}style={styles.containermodal}  backdropColor='white'
        >
         <View style={styles.container}>
       <AntDesign name="user" size={114} color="black" style={styles.image} />
@@ -84,7 +84,6 @@ await AsyncStorage.setItem("userProfileImage",result.assets[0].uri);
             Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis,
             omittam deseruisse consequuntur ius an,
           </Text>
-
           <TouchableOpacity style={styles.buttonContainer}>
             <Text style={styles.text}>{name} </Text>
           </TouchableOpacity>
@@ -110,10 +109,12 @@ await AsyncStorage.setItem("userProfileImage",result.assets[0].uri);
 const styles = StyleSheet.create({
   containermodal:{
     flex: 1,
-    backgroundColor:"gray",
+    backgroundColor:'white',
     marginTop:0,
     borderRadius:20,
-   
+   borderColor:'pink',
+   borderWidth:2,
+  
   },
   image:{
     alignSelf:"center",
@@ -209,9 +210,9 @@ alignSelf:'center',
     width:'95%',
     borderRadius: 5,
     backgroundColor: 'black',
-    elevation:19,
-    shadowColor:'#FFD700',
-    shadowOpacity:1
+    elevation:9,
+    shadowColor:'violet',
+  
  
     
   },
