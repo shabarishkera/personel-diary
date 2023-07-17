@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text ,BackHandler} from 'react-native';
+import { Text ,BackHandler,Alert} from 'react-native';
 import { SectionRow, SettingsPage, NavigateRow, BaseRow } from 'react-native-settings-view';
 import { deletediarytable, deleteusertable } from '../backend/Database';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
  export default function SettingScreen() {
   const navigator=useNavigation();
 //for showing confirmation while user persses delete user
@@ -31,15 +31,13 @@ const deletinguser=async()=>
 {
   await deleteusertable();
   await deletediarytable();
-  await AsyncStorage.setItem('isFirstEntry', 'false');
+  await AsyncStorage.setItem('isFirstEntry',null);
   BackHandler.exitApp();
 
 }
 const handleDeleteuser=async()=>
 {
   showConfirmDialog("Delete User","This could mean that all the data about the user will be lost ,are you sure about deletion?",deletinguser);
-  
-
 }
 const handleGoBack=()=>{
 navigator.goBack();

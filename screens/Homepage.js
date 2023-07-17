@@ -11,6 +11,10 @@ import { Agenda } from 'react-native-calendars';
 import { fetchalldiary } from '../backend/Database';
 import { useNavigation } from '@react-navigation/native';
 function Homepage() {
+  const date=new Date();
+    
+  var dateFormat = date.getFullYear() + "-" +((date.getMonth()+1).length != 2 ? "0" + (date.getMonth() + 1) : (date.getMonth()+1)) + "-" + (date.getDate().toLocaleString().length != 2 ?"0" + date.getDate() : date.getDate());
+ 
   const navigator=useNavigation();
   const handleEditDiary=async(item)=>
   {
@@ -39,7 +43,7 @@ setitems(tempitem);
   return (
     <SafeAreaView style={styles.container}>
       <Agenda
-        selected='2023-07-15'
+        selected={dateFormat}
         items={items}
         renderItem={(item, isFirst) => (
           <TouchableOpacity onLongPress={()=>handleEditDiary(item)} style={styles.item}>

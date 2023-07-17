@@ -51,7 +51,7 @@ await init().then(console.log("db init ok"))
                  <Stack.Screen
                   name="homePage"
                   component={Homepage}
-                  options={{title: 'Home'}}
+                  options={{title: ''}}
                  />
                  <Stack.Screen
                   name="signupScreen"

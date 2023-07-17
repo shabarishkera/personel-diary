@@ -56,7 +56,7 @@ export async function editdiary(date,data) {
         database.transaction((ts) => {
             ts.executeSql(`UPDATE  diarydata SET data='${data
                 }'
-                 WHERE date='${date}' `, [], () => resolve(), (_, error) => reject(error));
+                 WHERE dateinfo='${date}' `, [], () => resolve(), (_, error) => reject(error));
         });
       
     })
@@ -196,7 +196,7 @@ export function deletediarytable() {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
             ts.executeSql(
-                `DROP TABLE diarydata`,
+                `DROP TABLE IF EXISTS diarydata`,
                 [],
                 (code,result) => {
                     
@@ -212,7 +212,7 @@ export function deleteusertable() {
     const promise = new Promise((resolve, reject) => {
         database.transaction((ts) => {
             ts.executeSql(
-                `DROP TABLE user`,
+                `DROP TABLE IF EXISTS user`,
                 [],
                 (code,result) => {
                     

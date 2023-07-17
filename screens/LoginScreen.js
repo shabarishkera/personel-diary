@@ -37,6 +37,7 @@ export default function Login() {
     useEffect(()=>{
         async function checkfirstime()
         {
+           
             const result=await AsyncStorage.getItem('isFirstEntry');
             console.log(result+"first entry")
             if(result==null)
