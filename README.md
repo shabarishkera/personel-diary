@@ -38,13 +38,18 @@ then run
 ## Screenshots
 
 <img src="./assets/screenshots/sc6.jpg" width="300"><&nbsp;> <img src="./assets/screenshots/sc5.jpg" width="300">
+
 <img src="./assets/screenshots/sc7.jpg" width="300"><&nbsp;> <img src="./assets/screenshots/sc1.jpg" width="300">
+
 <img src="./assets/screenshots/sc3.jpg" width="300"><&nbsp;> 
 <img src="./assets/screenshots/sc4.jpg" width="300">
+
 <img src="./assets/screenshots/sc8.jpg" width="300"><&nbsp;> 
 <img src="./assets/screenshots/sc9.jpg" width="300">
+
 <img src="./assets/screenshots/sc10.jpg" width="300"><&nbsp;> 
 <img src="./assets/screenshots/sc11.jpg" width="300">
+
 <img src="./assets/screenshots/sc12.jpg" width="300">
 <&nbsp;> 
 <img src="./assets/screenshots/sc15.jpg" width="300">
