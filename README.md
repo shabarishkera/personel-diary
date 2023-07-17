@@ -51,5 +51,4 @@ then run
 <img src="./assets/screenshots/sc11.jpg" width="300">
 
 <img src="./assets/screenshots/sc12.jpg" width="300">
-<&nbsp;> 
-<img src="./assets/screenshots/sc15.jpg" width="300">
+<&nbsp;> <img src="./assets/screenshots/sc15.jpg" width="300">
