@@ -20,6 +20,8 @@ Our app is available for download on both iOS and Android devices, making it eas
 
 - [@shabarishkera](https://www.github.com/shabarishkera)
 
+## Android APK
+[Click Here to Download apk for Android](assets/diary.apk)
 
 ## Installation
 
